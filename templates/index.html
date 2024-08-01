@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="/static/{{session["style_choice"]}}.css" id="pagestyle" rel="stylesheet">
+        <title>Geo Guesser</title>
+    </head>
+		<script src="/static/script.js"></script>
+    <body>
+        <div class="jumbotron">
+            <h1>Geo Guesser</h1>
+        </div>	
+<form autocomplete="off" action = "/" method = "POST" onSubmit="return checkForm();">
+<table style="margin-left:auto; margin-right:auto">
+<tr>
+	<td colspan="2">
+<h2>Where is this?</h2>		
+	</td>
+</tr>
+	<tr><td width="600">
+		<iframe
+		width="600"
+		height="450"
+		style="border:0"
+		frameborder="0"
+		loading="lazy"
+		allowfullscreen=""
+		src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyBR5RY-Y3sGcCacuN8Xy1auBDne78xjQVo&location={{question.location}}&heading={{question.heading}}&pitch={{question.pitch}}&fov=35&language=ja">
+	</iframe>
+	</td>
+	<td style="padding-left:30px; text-align:left; width:240px">
+		<b>Question Number:</b>&nbsp;{{session["question"] + 1}} of {{session["question_count"]}}<!-- put "out of" # questions here -->
+			<br>
+			<input type="radio" id="{{ question.option1 }}" name="answer" value="{{ question.option1 }}">
+			<label for="{{ question.option1 }}">{{ question.option1 }}</label>
+			<br>
+			<input type="radio" id="{{ question.option2 }}" name="answer" value="{{ question.option2 }}">
+			<label for="{{ question.option2 }}">{{ question.option2 }}</label>
+			<br>
+			<input type="radio" id="{{ question.option3 }}" name="answer" value="{{ question.option3 }}">
+			<label for="{{ question.option3 }}">{{ question.option3 }}</label>
+			<br>
+			<input type="radio" id="{{ question.option4 }}" name="answer" value="{{ question.option4 }}">
+			<label for="{{ question.option4 }}">{{ question.option4 }}</label>
+			<br><span id="error" style="color:red; display:none">Choose an option from above!</span><br>
+			<input type = "submit" name="submit" id="submit" value = "Submit">
+			<br><br>
+			<b>Score:</b>&nbsp;{{ session["correct"] }}
+			<br><br>
+      {% if session["answer_given"] == session["correct_answer"] %}
+    <span class="right">{{session["answer_given"].title()}} is correct! </span>
+      {% elif session["question"] > 0 %}
+      <span class=""wrong">
+      {{ session["answer_given"].title()}} is wrong
+      {{ session["correct_answer"]}} is the correct answer
+      </span>
+      {% endif %}
+    
+		
+			<!-- feedback for right / wrong answer to previous question goes here -->
+		
+		</td></tr>
+		<tr><td colspan="2" style="text-align:left">
+		<b>Theme:</b>
+		<!-- another style choice needs to be added to this dropdown -->
+		<select id="style_choice" name="style_choice"  onchange="changeStyle();">
+		{% for option in options: %}
+		<option value="{{ option }}" {% if session["style_choice"] == option: %} selected {% endif %}> 
+			{{ option.title() }}
+		</option>
+		{% endfor %}
+		</select>
+		</td></tr>
+		</table>
+		</form>
+    </body>
+</html>

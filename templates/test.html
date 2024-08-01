@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Test page</title>
+</head>
+<body>
+{% for question in questions %}
+		<iframe
+		width="600"
+		height="450"
+		style="border:0"
+		frameborder="0"
+		loading="lazy"
+		allowfullscreen=""
+		src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyBR5RY-Y3sGcCacuN8Xy1auBDne78xjQVo&location={{question.location}}&heading={{question.heading}}&pitch={{question.pitch}}&fov=35&language=ja">
+	</iframe>
+	<br><br>
+{% endfor %}
+	
+</body>
+</html>

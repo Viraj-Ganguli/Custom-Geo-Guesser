@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="/static/{{session["style_choice"]}}.css" id="pagestyle" rel="stylesheet">
+        <title>Geo Guesser</title>
+				<style>
+				table{margin-left:auto; margin-right: auto}
+				td{padding:15px;}
+				</style>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Geo Guesser</h1>
+        </div>
+      {% if session["correct"] > (session["question_count"] / 2)}
+			<h2>Congratulations!</h2>	
+      {% else %}
+      <h2>Uh oh, you messed up!</h2>
+      {%endif %}
+			<table>
+			<tr>
+			<td> 
+			<b>Your score was:</b> 
+			{{ session["correct"] }} / {{ session["question_count"] }}
+			</td>
+			</tr>
+			<tr><td>
+			<a href="/">Play Again</a>
+			</td></tr>
+			<tr><td>
+			<b>Answer Key</b>
+			</td></tr>
+			<tr><td style="text-align:left">
+			<ol>
+			{% for question in questions %}
+			   <li>
+           <a href= "https://www.google.com/maps?q&layer=c&cbll={{question.location}}&cbp=11,0,0,0,0" target = "_blank" >  
+           {{ question.answer }}
+           </a>
+				 </li>
+			{% endfor %}
+			</ol>
+			</td></tr></table>
+    </body>
+</html>

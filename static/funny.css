@@ -1,0 +1,36 @@
+body {
+    background-color: #ff00ff;
+    color: #00ff00;
+    font-size: 2rem;
+    font-family: 'Comic Sans MS', cursive;
+    font-weight: 700;
+    line-height: 1.8;
+    margin: 0;
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: #ffcc00;
+    color: #ff0000;
+    margin-bottom: 4rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.right {
+    color: #0000ff;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.wrong {
+    color: #ff3300;
+    font-size: 1.5rem;
+    text-decoration: line-through;
+}
+
+h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 64px;
+    color: #6600cc;
+}

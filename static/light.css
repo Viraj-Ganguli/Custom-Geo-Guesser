@@ -1,0 +1,31 @@
+body {
+    background-color: #fff;
+    color: #212529;
+    font-size: 1rem;
+		font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: #086c94;
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 0.1rem;
+    text-align: center;
+}
+
+.right{
+	color: #00ff00;
+}
+
+.wrong{
+	color: #ff0000;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+}
